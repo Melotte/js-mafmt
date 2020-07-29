@@ -27,6 +27,11 @@ const WebSockets = or(
   and(DNS, base('ws'))
 )
 
+const TLS = or(
+  and(TCP, base('tls')),
+  and(DNS, base('tls'))
+)
+
 const WebSocketsSecure = or(
   and(TCP, base('wss')),
   and(DNS, base('wss'))
@@ -68,6 +73,7 @@ const Reliable = or(
   WebSocketsSecure,
   HTTP,
   HTTPS,
+  TLS,
   WebRTCStar,
   WebRTCDirect,
   TCP,
@@ -129,6 +135,7 @@ exports.Stardust = Stardust
 exports.Circuit = Circuit
 exports.P2P = P2P
 exports.IPFS = P2P
+exports.TLS = TLS
 
 /*
  * Validation funcs
